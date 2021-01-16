@@ -1,9 +1,4 @@
 
-# Build:
-#   docker build -t elgalu/jenkins .
-# Test:
-#   docker run --rm -ti elgalu/jenkins chromedriver --version
-#   #=> ChromeDriver 2.3.....
 FROM jenkins/jenkins:lts
 
 # Set user root to allow us to install the rest of what's needed
@@ -66,14 +61,6 @@ RUN cd /usr/local/bin \
   && python --version \
   && pip --version
 
-
-
-# Prepare installation of Oracle Java 8
-#ENV JAVA_VER 8
-#ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-
-#RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.bashrc
-
 # Install maven 3.3.9
 RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
     tar xzf /tmp/apache-maven-3.3.9-bin.tar.gz -C /opt/ && \
@@ -83,11 +70,6 @@ RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache
 
 ENV MAVEN_HOME /opt/maven
 
-
-
-
 # Go back to non-sudo user
-
-
 
 USER jenkins
