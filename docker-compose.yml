@@ -4,8 +4,8 @@ services:
     build:
       context: .
       args:
-        - DOCKER_GROUP_ID=${DOCKER_GROUP_ID}
-    image: jenkinst
+        - DOCKER_GROUP_ID=999
+    image: jenkins
     #privileged: true
     #user: root
     ports:
@@ -15,4 +15,4 @@ services:
     volumes:
       - ~/jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/local/bin/docker:/usr/local/bin/docker
+      - /usr/bin/docker:/usr/local/bin/docker
