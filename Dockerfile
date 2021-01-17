@@ -1,8 +1,8 @@
 FROM jenkins/jenkins:lts
-
+ARG DOCKER_GROUP_ID
 # Set user root to allow us to install the rest of what's needed
 USER root
-
+RUN groupadd -g $DOCKER_GROUP_ID docker && gpasswd -a jenkins docker
 #==============================
 # Google Chrome Stable - Latest
 #==============================
